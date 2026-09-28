@@ -1,8 +1,15 @@
-const App = () =>{
-  return(
+import { useEffect } from "react";
+import { getCategoriesList } from "./services/recipeAPI";
+
+const App = () => {
+  useEffect(() => {
+    getCategoriesList();
+  }, []);
+
+  return (
     <div>
-      App
+      <p className="text-4xl font-bold text-blue-600 text-center">App</p>
     </div>
-  )
-}
-export default App
+  );
+};
+export default App;
