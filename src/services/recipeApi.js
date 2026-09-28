@@ -11,6 +11,30 @@ export const getCategoriesList = async () => {
   }
 };
 
+export const getIngredientList = async () => {
+  console.log("getIngredientList")
+  try {
+    const response = await axios.get(
+      "https://www.themealdb.com/api/json/v1/1/list.php?i=list",
+    );
+    console.log(response.data.meals);
+  } catch (error) {
+    console.log("Error in fetching ingredients", error);
+  }
+};
+
+export const getAreaList = async () => {
+  console.log("getAreaList")
+  try {
+    const response = await axios.get(
+      "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
+    );
+    console.log(response.data.meals);
+  } catch (error) {
+    console.log("Error in fetching area", error);
+  }
+};
+
 export const searchRecipe = async (recipe) => {
   try {
     const response = await axios.get(
