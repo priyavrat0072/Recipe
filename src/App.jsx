@@ -1,14 +1,37 @@
-import { useEffect } from "react";
-import { getCategoriesList } from "./services/recipeAPI";
+import { useEffect, useState } from "react";
+import { getCategoriesList , getRecipe } from "./services/recipeAPI";
 
 const App = () => {
+
+  const [search , setSearch] = useState([])
+  const [recipeInput , setRecipeInput] = useState([])
+
+
   useEffect(() => {
+    if(search != ""){
+      getRecipe(search)
+    }
+  }, [search]);
+
+  useEffect(()=>{
     getCategoriesList();
-  }, []);
+  },[])
+
+  const handleSearch=()=>{
+    setSearch(recipeInput)
+    console.log(search)
+  }
+
+  
+
 
   return (
     <div>
-      <p className="text-4xl font-bold text-blue-600 text-center">App</p>
+      <div>Recipe Finder</div>
+      <div>
+        <input type="text" value={recipeInput} placeholder="Search your favorite recipes..." onChange={(e)=>setRecipeInput(e.target.value)}/>
+        <button onClick={handleSearch}>Search Recipe</button>
+      </div>
     </div>
   );
 };
