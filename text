@@ -1,0 +1,15 @@
+      <div className="h-48 w-48  mx-4 p-2">
+
+
+        <p className="text-xl">{recipeDetails.strMeal}</p>
+        <p>{recipeDetails.strCategory}</p>
+        <p>{recipeDetails.strCountry}</p>
+
+
+        <button
+          type="button"
+          class="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-full text-sm px-4 py-2.5 focus:outline-none shadow-sm"
+        >
+          View Details
+        </button>
+      </div>
