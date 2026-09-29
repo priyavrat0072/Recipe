@@ -1,8 +1,9 @@
-const RecipeCard = (props) => {
-    console.log(props)
+const RecipeCard = ({recipeDetails}) => {
+    console.log(recipeDetails.strMeal)
     return(
-        <div>
-            
+        <div className="bg-white p-6 rounded-lg shadow-lg m-1">
+            <img src={recipeDetails.strMealThumb} className="h-16 w-16" />
+            <p>Card</p>
         </div>
     )
 }
