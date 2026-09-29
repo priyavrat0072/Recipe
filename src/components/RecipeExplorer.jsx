@@ -1,16 +1,25 @@
 import { useState } from "react";
-import { Search, Heart } from "lucide-react";
+import { searchRecipe } from "../services/recipeAPI";
+import RecipeFilter from "./RecipeFilter";
 
 const RecipeExolorer = () => {
   const [inputRecipe, setInputRecipe] = useState("");
+  const [searchedRecipe , setSearchedRecipe] = useState([])
 
-  const handleSearch = () => {
-    console.log(inputRecipe);
+
+
+  const handleSearch = async() => {
+    let searchRecipeData = await searchRecipe(inputRecipe)
+    setSearchedRecipe(searchRecipeData)
+    // console.log(searchedRecipe)
   };
+
+  
 
   return (
     <div className="bg-mauve-900 w-full min-h-screen ">
       <div className="p-5 flex justify-center">
+
         <div className="relative w-full max-w-md">
           <input
             type="text"
@@ -29,6 +38,9 @@ const RecipeExolorer = () => {
             🔍
           </button>
         </div>
+      </div>
+      <div>
+        <RecipeFilter searchedRecipe = {searchedRecipe} />
       </div>
     </div>
   );

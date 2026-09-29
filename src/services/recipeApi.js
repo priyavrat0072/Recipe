@@ -40,7 +40,7 @@ export const searchRecipe = async (recipe) => {
     const response = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipe}`,
     );
-    console.log(response.data.meals);
+    return response.data.meals;
   } catch (error) {
     console.log("Error in finding recipe", error);
   }
