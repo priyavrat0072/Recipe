@@ -2,8 +2,9 @@ import { useState } from "react";
 import { searchRecipe } from "../services/recipeAPI";
 import RecipeFilter from "./RecipeFilter";
 
-const RecipeExolorer = ({searchedRecipe , setSearchedRecipe}) => {
-  const [inputRecipe, setInputRecipe] = useState("");
+const RecipeExplorer = ({searchedRecipe , setSearchedRecipe , inputRecipe, setInputRecipe}) => {
+  // const [inputRecipe, setInputRecipe] = useState("");
+  // const [searchedRecipe , setSearchedRecipe] = useState([])
 
   const handleSearch = async() => {
     let searchRecipeData = await searchRecipe(inputRecipe)
@@ -42,4 +43,4 @@ const RecipeExolorer = ({searchedRecipe , setSearchedRecipe}) => {
     </div>
   );
 };
-export default RecipeExolorer;
+export default RecipeExplorer;
