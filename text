@@ -8,7 +8,7 @@
 
         <button
           type="button"
-          class="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-full text-sm px-4 py-2.5 focus:outline-none shadow-sm"
+          className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-full text-sm px-4 py-2.5 focus:outline-none shadow-sm"
         >
           View Details
         </button>

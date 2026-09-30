@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 const RecipeCard = ({ recipeDetails }) => {
-  console.log(recipeDetails.strMeal);
-  return (
+    const navigation = useNavigate()
+    const handleNavigation =()=>{
+        navigation("/recipeDetail", {state : recipeDetails})
+    }
+ return (
     <div className="bg-olive-800 rounded-2xl shadow-md m-1 hover:scale-[1.05] hover:shadow-xl transition-all duration-200 h-112 w-78 flex flex-col items-center pt-4 border-2 border-white">
       <img
         src={recipeDetails.strMealThumb}
@@ -16,7 +21,8 @@ const RecipeCard = ({ recipeDetails }) => {
       </div>
       <button
           type="button"
-          class="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-full text-sm px-4 py-2.5 focus:outline-none shadow-sm mt-auto mb-4"
+          className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-full text-sm px-4 py-2.5 focus:outline-none shadow-sm mt-auto mb-4"
+            onClick={handleNavigation}
         >
           View Details
         </button>

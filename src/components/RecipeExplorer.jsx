@@ -11,7 +11,7 @@ const RecipeExolorer = () => {
   const handleSearch = async() => {
     let searchRecipeData = await searchRecipe(inputRecipe)
     setSearchedRecipe(searchRecipeData)
-    // console.log(searchedRecipe)
+    
   };
 
   
