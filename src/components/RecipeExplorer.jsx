@@ -4,9 +4,6 @@ import RecipeFilter from "./RecipeFilter";
 
 const RecipeExolorer = ({searchedRecipe , setSearchedRecipe}) => {
   const [inputRecipe, setInputRecipe] = useState("");
-  // const [searchedRecipe , setSearchedRecipe] = useState([])
-
-
 
   const handleSearch = async() => {
     let searchRecipeData = await searchRecipe(inputRecipe)

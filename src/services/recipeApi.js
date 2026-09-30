@@ -5,7 +5,7 @@ export const getCategoriesList = async () => {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?c=list",
     );
-    console.log(response.data.meals);
+    return response.data.meals;
   } catch (error) {
     console.log("Error in fetching categories", error);
   }
@@ -17,7 +17,7 @@ export const getIngredientList = async () => {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?i=list",
     );
-    console.log(response.data.meals);
+    return response.data.meals;
   } catch (error) {
     console.log("Error in fetching ingredients", error);
   }
@@ -29,7 +29,7 @@ export const getAreaList = async () => {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
     );
-    console.log(response.data.meals);
+    return response.data.meals;
   } catch (error) {
     console.log("Error in fetching area", error);
   }
