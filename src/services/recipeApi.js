@@ -12,7 +12,7 @@ export const getCategoriesList = async () => {
 };
 
 export const getIngredientList = async () => {
-  console.log("getIngredientList")
+  // console.log("getIngredientList")
   try {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?i=list",
@@ -24,7 +24,7 @@ export const getIngredientList = async () => {
 };
 
 export const getAreaList = async () => {
-  console.log("getAreaList")
+  // console.log("getAreaList")
   try {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
@@ -40,11 +40,13 @@ export const searchRecipe = async (recipe) => {
     const response = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipe}`,
     );
-    return response.data.meals;
+    return response.data.meals || [];
   } catch (error) {
     console.log("Error in finding recipe", error);
+    return []
   }
 };
+
 
 export const getCategoryBasedRecipe = async (category) => {
   try {

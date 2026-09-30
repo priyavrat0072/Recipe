@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import RecipeCard from "./RecipeCard"
 import { getAreaList, getCategoriesList, getIngredientList } from "../services/recipeAPI"
 import SearchFilter from "./SearchFilter"
@@ -16,6 +16,10 @@ const RecipeFilter =({searchedRecipe})=>{
 
     const [areaList , setAreaList] = useState([])
     const [selectedArea , setSelectedArea] = useState(null)
+
+    const category = searchParams.get("category")
+    const ingredient = searchParams.get("ingredient")
+    const area = searchParams.get("area")
 
     useEffect(()=>{
         const fetchCategoriesList = async() =>{
@@ -41,20 +45,30 @@ const RecipeFilter =({searchedRecipe})=>{
     fetchAreaList()
     },[])
 
-    const categoryOptions = categoriesList.map((category) => ({
+    
+
+
+
+    const categoryOptions = useMemo(()=>{
+        return categoriesList.map((category) => ({
         label : category.strCategory,
         value : category.strCategory
     }))
+    },[categoriesList])
 
-    const ingredientOptions = ingreidentList?.map((ingredient)=>({
+    const ingredientOptions = useMemo(()=>{
+        return ingreidentList?.map((ingredient)=>({
         label : ingredient.strIngredient,
         value : ingredient.strIngredient
     }))
+    },[ingreidentList])
 
-    const areaOptions = areaList.map((area)=>({
+    const areaOptions = useMemo(() => {
+        return areaList.map((area)=>({
         label : area.strCountry,
         value : area.strCountry
     }))
+    },[areaList])
     
 
     const handleCategorySelect =(selectedOption) =>{
@@ -93,6 +107,22 @@ const RecipeFilter =({searchedRecipe})=>{
         setSearchParams(params)
     }
 
+    useEffect(()=>{
+        const category = searchParams.get("category")
+        const ingredient = searchParams.get("ingredient")
+        const area = searchParams.get("area")
+        
+        const categoryOption = categoryOptions.find(option => option.value === category)
+        const ingredientOption = ingredientOptions.find(option => option.value === ingredient)
+        const areaOption = areaOptions.find(option => option.value === area)
+
+        setSelectedCategory(categoryOption || null)
+        setSelectedIngredient(ingredientOption || null)
+        setSelectedArea(areaOption || null)
+
+
+    },[searchParams , categoryOptions , ingredientOptions , areaOptions])
+
     
     // useEffect(()=>{console.log(`selected category : ${selectedCategory?.label}`)},[selectedCategory])
     // useEffect(()=>{console.log(`selected ingredeint : ${selectedIngredient?.label}`)},[selectedIngredient])
@@ -101,42 +131,64 @@ const RecipeFilter =({searchedRecipe})=>{
     // console.log(`${selectedIngredient?.label}`)
     // console.log(`${selectedArea?.label}`)
 
+// console.log("searchedRecipe in RecipeFilter:", searchedRecipe);
+// console.log("is array:", Array.isArray(searchedRecipe));
+
+    const recipes = searchedRecipe || [];
+
     const filteredRecipes = searchedRecipe.filter((recipe) => {
-        if(selectedCategory && recipe.strCategory !== selectedCategory.value){
+        if(category && recipe.strCategory !== category){
             return false
         }
-        if(selectedArea && recipe.strCountry !== selectedArea.value){
+        if(area && recipe.strCountry !== area){
             return false
         }
-        if(selectedIngredient){
+        if(ingredient){
             const ingredients = Array.from({length : 20},(_, index)=>
                 recipe[`strIngredient${index+1}`]
             );
-            if(!ingredients.includes(selectedIngredient.value)){
+            if(!ingredients.includes(ingredient)){
                 return false
             }
         }
         return true
     })
-    console.log(`filteredRecipes : ${filteredRecipes}`)
+    // console.log(`filteredRecipes : ${filteredRecipes}`)
 
 
     return(
         <div>
         
         <div className="flex items-center justify-center gap-12 mt-6">
-           <div className="w-64"> <SearchFilter options={categoryOptions} onSelect = {handleCategorySelect} placeholder="Select Category..." /> </div>
-           <div className="w-64"> <SearchFilter options={ingredientOptions} onSelect = {handleIngredientSelect} placeholder="Select Ingredient..." /> </div>
-           <div className="w-64"> <SearchFilter options={areaOptions} onSelect = {handleAreaSelect} placeholder="Select Area..."/> </div>
+           <div className="w-64"> <SearchFilter options={categoryOptions} value={selectedCategory} onSelect = {handleCategorySelect} placeholder="Select Category..." /> </div>
+           <div className="w-64"> <SearchFilter options={ingredientOptions} value={selectedIngredient} onSelect = {handleIngredientSelect} placeholder="Select Ingredient..." /> </div>
+           <div className="w-64"> <SearchFilter options={areaOptions} value={selectedArea} onSelect = {handleAreaSelect} placeholder="Select Area..."/> </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-20">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-20">
             {
                 filteredRecipes.map((item)=>(
                     <RecipeCard key={item.idMeal} recipeDetails = {item}/>
                 ))
             }
-        </div>
+        </div> */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-20">
+    {filteredRecipes.length > 0 ? (
+        filteredRecipes.map((item) => (
+            <RecipeCard
+                key={item.idMeal}
+                recipeDetails={item}
+            />
+        ))
+    ) : (
+        <p className="col-span-full text-center text-white">
+            No recipes found.
+        </p>
+    )}
+</div>
+
+
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import Select from "react-select"
 
-const SearchFilter = ({options , onSelect , placeholder}) => {
+const SearchFilter = ({options ,value , onSelect , placeholder}) => {
 
       const customStyles = {
     control: (base, state) => ({
@@ -41,6 +41,7 @@ const SearchFilter = ({options , onSelect , placeholder}) => {
     <div>
       <Select 
          options={options} 
+         value={value}
          onChange={onSelect}
          placeholder = {placeholder}
          styles={customStyles}
