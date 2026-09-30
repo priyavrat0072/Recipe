@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
 const RecipeCard = ({ recipeDetails }) => {
+  
     const navigation = useNavigate()
+
     const handleNavigation =()=>{
         navigation("/recipeDetail", {state : recipeDetails})
     }
+
  return (
     <div className="bg-olive-800 rounded-2xl shadow-md m-1 hover:scale-[1.05] hover:shadow-xl transition-all duration-200 h-112 w-78 flex flex-col items-center pt-4 border-2 border-white">
       <img

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { searchRecipe } from "../services/recipeAPI";
 import RecipeFilter from "./RecipeFilter";
 
-const RecipeExolorer = () => {
+const RecipeExolorer = ({searchedRecipe , setSearchedRecipe}) => {
   const [inputRecipe, setInputRecipe] = useState("");
-  const [searchedRecipe , setSearchedRecipe] = useState([])
+  // const [searchedRecipe , setSearchedRecipe] = useState([])
 
 
 
