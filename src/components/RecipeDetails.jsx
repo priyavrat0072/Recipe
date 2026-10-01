@@ -5,6 +5,7 @@ const RecipeDetails = () => {
   /* Getting the recipe details object from card using location.state */
   const location = useLocation();
   const recipe = location.state;
+  console.log(recipe)
 
   /* creating array for ingredients and measurements from the recipe details recipe object */
   const getIngredients = (meal) => {

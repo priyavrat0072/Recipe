@@ -114,6 +114,7 @@ const RecipeFilter = ({ searchedRecipe , loading }) => {
     setSearchParams(params);
   };
 
+
   /* setting the options in dropdown based on users input when user returns from recipe detail page so that user can se filtered results */
   useEffect(() => {
     const category = searchParams.get("category");
