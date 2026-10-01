@@ -3,6 +3,8 @@
 A simple recipe finder application built with React.js and TheMealDB API.
 Users can search for recipes, filter recipes by category, ingredient, and area, and view detailed information about each recipe.
 
+
+
 # Features
 
 * Search recipes by name
@@ -57,5 +59,11 @@ Users can search for recipes, filter recipes by category, ingredient, and area, 
 
 This project uses the TheMealDB API to fetch recipe data.
 API: https://www.themealdb.com/
+
+# Live
+The website is deployed on netlify
+recipe-finder-10101 - https://recipe-finder-10101.netlify.app/
+
+
 
 
