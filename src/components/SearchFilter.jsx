@@ -1,5 +1,6 @@
 import Select from "react-select"
 
+/* Searchable dropdown from react-select for user to select category , ingredient , area */
 const SearchFilter = ({options ,value , onSelect , placeholder}) => {
 
       const customStyles = {

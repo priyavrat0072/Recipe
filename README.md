@@ -1,18 +1,61 @@
-# React + Vite
+# Recipe Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple recipe finder application built with React.js and TheMealDB API.
+Users can search for recipes, filter recipes by category, ingredient, and area, and view detailed information about each recipe.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Search recipes by name
+* Filter recipes by category
+* Filter recipes by ingredient
+* Filter recipes by area
+* Apply multiple filters together
+* View recipe details
+* View ingredients and measurements
+* View cooking instructions
+* Watch recipe videos when available
+* Loading state while fetching recipes
+* Custom message when no recipes are found
+* Responsive design
 
-## React Compiler
+# Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React.js
+* JavaScript
+* Tailwind CSS
+* React Router
+* Axios
+* React Select
+* TheMealDB API
+* Vite
 
-## Expanding the Oxlint configuration
+# How It Works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Recipes are fetched from TheMealDB API.
+2. Users can search for recipes using the search bar.
+3. Users can filter recipes by:
+
+   * Category
+   * Ingredient
+   * Area
+4. The selected filters are stored in the URL.
+5. Matching recipes are displayed as recipe cards.
+6. Clicking a recipe opens its detailed recipe page.
+
+# A Test case flow
+1. search rice
+2. search seafood in category
+3. search saffron
+4. search spain in area
+5. User will see spanish seafood rice
+6. On card click or view details user will see recipe details page
+7. On recipe page image , ingredients and measurements ,instructions tabs 
+8. Two buttons go back and watch recipe video if video available 
+
+
+# API
+
+This project uses the TheMealDB API to fetch recipe data.
+API: https://www.themealdb.com/
 
 

@@ -1,34 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 const RecipeDetails = () => {
-  console.log("Recipe details");
   const navigate = useNavigate();
 
+  /* Getting the recipe details object from card using location.state */
   const location = useLocation();
   const recipe = location.state;
 
-//   const ing = [
-//     { ingredient: "Chicken Breast", measure: "500g" },
-//     { ingredient: "Yogurt", measure: "150g" },
-//     { ingredient: "Lemon Juice", measure: "2 tbsp" },
-//     { ingredient: "Garlic", measure: "4 cloves" },
-//     { ingredient: "Ginger", measure: "1 tbsp" },
-//     { ingredient: "Garam Masala", measure: "2 tsp" },
-//     { ingredient: "Turmeric", measure: "1 tsp" },
-//     { ingredient: "Cumin", measure: "1 tsp" },
-//     { ingredient: "Paprika", measure: "2 tsp" },
-//     { ingredient: "Salt", measure: "1 tsp" },
-//     { ingredient: "Vegetable Oil", measure: "2 tbsp" },
-//     { ingredient: "Butter", measure: "2 tbsp" },
-//     { ingredient: "Onion", measure: "1 large" },
-//     { ingredient: "Tomato", measure: "400g" },
-//     { ingredient: "Tomato Puree", measure: "2 tbsp" },
-//     { ingredient: "Coconut Milk", measure: "200ml" },
-//     { ingredient: "Heavy Cream", measure: "100ml" },
-//     { ingredient: "Cilantro", measure: "2 tbsp" },
-//     { ingredient: "Chili Powder", measure: "1 tsp" },
-//     { ingredient: "Kasuri Methi", measure: "1 tsp" },
-//   ];
-
+  /* creating array for ingredients and measurements from the recipe details recipe object */
   const getIngredients = (meal) => {
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
@@ -43,25 +21,27 @@ const RecipeDetails = () => {
   };
 
   const ingredients = getIngredients(recipe);
-//   console.log("ingredients----", JSON.stringify(ingredients, null, 2));
-
-  // <button onClick={()=>navigate(-1)}>go back</button>
   return (
     <div className="bg-mauve-900 w-full min-h-screen ">
-      <div className="flex  justify-center min-h-screen ">
+      <div className="flex justify-center px-4 pb-10">
 
-        <div className="w-175 h-165 p-4 bg-neutral-700 rounded-2xl shadow-lg mt-10 ">
-            <div className="flex justify-between px-10 mb-3">
+        <div className="w-full max-w-3xl p-4 bg-neutral-700 rounded-2xl shadow-lg mt-6 sm:mt-10">
+            <div className="flex justify-between px-2 sm:px-10 mb-3">
                 <button onClick={()=>navigate(-1)} className="text-white bg-green-500 hover:bg-green-600 font-medium rounded-full text-sm px-5 py-2 focus:outline-none shadow-sm mt-auto mb-1.5">Go-back</button>
-                <button onClick={()=>window.open(recipe.strYoutube ,"_blank")} className="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm px-5 py-2 focus:outline-none shadow-sm mt-auto mb-1.5">Watch Video</button>
+                {
+                  recipe.strYoutube ? (
+                    <button onClick={()=>window.open(recipe.strYoutube ,"_blank")} className="text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm px-5 py-2 focus:outline-none shadow-sm mt-auto mb-1.5">Watch Video</button>
+                  ) : null
+                }
             </div>
-          <div className="h-88 flex gap-10 mb-10">
-            <div>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-10 mb-6">
+            <div className="w-full md:w-80">
               <img
                 src={recipe.strMealThumb}
-                className="h-72 w-80 border-2 border-amber-100 rounded-2xl object-cover"
+                alt={recipe.strMeal}
+                className="h-60 sm:h-72 w-full border-2 border-amber-100 rounded-2xl object-cover"
               />
-              <div className="text-white mt-2 h-40 w-80 p-1">
+              <div className="text-white mt-2 w-full p-1">
                 <p className="font-bold text-lg mb-1">{recipe.strMeal}</p>
                 <div className="flex justify-between px-0.5">
                   <p className="font-medium text-sm text-lime-400">
@@ -74,12 +54,12 @@ const RecipeDetails = () => {
               </div>
             </div>
 
-            <div className="bg-olive-800 w-80 pl-3 pt-1 border-2 rounded-2xl h-72  overflow-y-auto border-amber-100  ">
+            <div className="bg-olive-800 w-full md:w-80 pl-3 pt-1 pb-2 border-2 rounded-2xl max-h-72 overflow-y-auto border-amber-100">
               <p className="text-lg underline font-semibold text-yellow-400">
                 Ingredients & Measurements
               </p>
-              {ingredients.map((item) => (
-                <div className="flex gap-5" >
+              {ingredients.map((item , index) => (
+                <div className="flex gap-5" key={index}>
                   <p className="text-sm font-light text-white">
                     {item.ingredient}-{item.measure}
                   </p>
@@ -87,8 +67,8 @@ const RecipeDetails = () => {
               ))}
             </div>
           </div>
-          <div className="w-full h-42 rounded-2xl bg-stone-900 mt-4 overflow-y-auto p-2 border-amber-100 border-2">
-              <p className="mb-1 text-lg underline font-semibold text-yellow-400 ">Instruction for your dish....</p>
+          <div className="w-full max-h-64 rounded-2xl bg-stone-900 mt-4 overflow-y-auto p-2 border-amber-100 border-2">
+              <p className="mb-1 text-lg underline font-semibold text-yellow-400">Instruction for your dish....</p>
               <p className="font-light text-sm text-white">{recipe.strInstructions}</p>
           </div>
         </div>

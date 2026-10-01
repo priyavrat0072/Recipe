@@ -1,5 +1,6 @@
 import axios from "axios";
 
+/* fetching category list */
 export const getCategoriesList = async () => {
   try {
     const response = await axios.get(
@@ -11,8 +12,8 @@ export const getCategoriesList = async () => {
   }
 };
 
+/* fetching ingredient list */
 export const getIngredientList = async () => {
-  // console.log("getIngredientList")
   try {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?i=list",
@@ -23,8 +24,8 @@ export const getIngredientList = async () => {
   }
 };
 
+/* fetching area list */
 export const getAreaList = async () => {
-  // console.log("getAreaList")
   try {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
@@ -35,6 +36,7 @@ export const getAreaList = async () => {
   }
 };
 
+/* fetching recipe list based on user input */
 export const searchRecipe = async (recipe) => {
   try {
     const response = await axios.get(
@@ -47,7 +49,7 @@ export const searchRecipe = async (recipe) => {
   }
 };
 
-
+/* fetching recipe list based on categroy */
 export const getCategoryBasedRecipe = async (category) => {
   try {
     const response = await axios.get(
@@ -59,6 +61,7 @@ export const getCategoryBasedRecipe = async (category) => {
   }
 };
 
+/* fetching recipe list based on ingredients */
 export const getIngredientBasedRecipe = async (ingredient) => {
   try {
     const response = await axios.get(
@@ -70,6 +73,7 @@ export const getIngredientBasedRecipe = async (ingredient) => {
   }
 };
 
+/* fetching recipe list based on area */
 export const getAreaBasedRecipe = async (area) => {
   try {
     const response = await axios.get(
@@ -81,6 +85,7 @@ export const getAreaBasedRecipe = async (area) => {
   }
 };
 
+/* fetching recipe list based on mealId */
 export const getMealIdBasedRecipe = async (mealId) => {
   try {
     const response = await axios.get(

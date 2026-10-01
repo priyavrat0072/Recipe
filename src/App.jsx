@@ -9,12 +9,14 @@ const App = () =>{
 
   const [searchedRecipe , setSearchedRecipe] = useState([])
   const [inputRecipe, setInputRecipe] = useState("");
+  const [loading , setLoading] = useState(true)
 
+    /* Fetching the initial list of the recipes for home page */
     useEffect(()=>{
       const loadinitialRecipe = async () => {
         const data = await searchRecipe("")
-        // console.log(`data : ${data}`)
         setSearchedRecipe(data)
+        setLoading(false)
       }
       loadinitialRecipe()
     },[])
@@ -23,7 +25,7 @@ const App = () =>{
     <BrowserRouter>
       <Header/>
         <Routes>
-          <Route path="/" element={<RecipeExplorer searchedRecipe ={searchedRecipe} setSearchedRecipe = {setSearchedRecipe} inputRecipe={inputRecipe} setInputRecipe={setInputRecipe} />} />
+          <Route path="/" element={<RecipeExplorer searchedRecipe ={searchedRecipe} setSearchedRecipe = {setSearchedRecipe} inputRecipe={inputRecipe} setInputRecipe={setInputRecipe} loading={loading} setLoading={setLoading}/>} />
           <Route path="/recipeDetail" element={<RecipeDetails/>} />
         </Routes>
       </BrowserRouter>
@@ -31,5 +33,3 @@ const App = () =>{
 }
 export default App;
 
-// {searchedRecipe , setSearchedRecipe}
-// searchedRecipe ={searchedRecipe} setSearchedRecipe = {setSearchedRecipe}
