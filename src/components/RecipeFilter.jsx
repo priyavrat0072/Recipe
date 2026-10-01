@@ -4,7 +4,7 @@ import {
   getAreaList,
   getCategoriesList,
   getIngredientList,
-} from "../services/recipeAPI";
+} from "../services/recipeApi.js";
 import SearchFilter from "./SearchFilter";
 import { useSearchParams } from "react-router-dom";
 

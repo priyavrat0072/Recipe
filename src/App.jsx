@@ -3,7 +3,7 @@ import RecipeExplorer from './components/RecipeExplorer.jsx'
 import RecipeDetails from "./components/RecipeDetails.jsx";
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import { useState , useEffect } from "react";
-import { searchRecipe } from "./services/recipeAPI.js";
+import { searchRecipe } from "./services/recipeApi.js";
 
 const App = () =>{
 

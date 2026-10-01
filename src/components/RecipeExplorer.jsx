@@ -1,4 +1,4 @@
-import { searchRecipe } from "../services/recipeAPI";
+import { searchRecipe } from "../services/recipeApi.js";
 import RecipeFilter from "./RecipeFilter";
 
 const RecipeExplorer = ({searchedRecipe , setSearchedRecipe , inputRecipe, setInputRecipe, loading , setLoading}) => {
