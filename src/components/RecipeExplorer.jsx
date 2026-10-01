@@ -6,23 +6,15 @@ const RecipeExplorer = ({searchedRecipe , setSearchedRecipe , inputRecipe, setIn
   // const [inputRecipe, setInputRecipe] = useState("");
   // const [searchedRecipe , setSearchedRecipe] = useState([])
 
-//   useEffect(() => {
-//   const loadInitialRecipes = async () => {
-//     const data = await searchRecipe("");
-//     setSearchedRecipe(data);
-//   };
 
-//   loadInitialRecipes();
-// }, []);
-
-  useEffect(()=>{
-    const loadinitialRecipe = async () => {
-      const data = await searchRecipe("")
-      console.log(`data : ${data}`)
-      setSearchedRecipe(data)
-    }
-    loadinitialRecipe()
-  },[])
+  // useEffect(()=>{
+  //   const loadinitialRecipe = async () => {
+  //     const data = await searchRecipe("")
+  //     // console.log(`data : ${data}`)
+  //     setSearchedRecipe(data)
+  //   }
+  //   loadinitialRecipe()
+  // },[])
 
   const handleSearch = async() => {
     let searchRecipeData = await searchRecipe(inputRecipe)
